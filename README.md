@@ -1,1 +1,1 @@
-# polytech-projet-architechture
+# polytech-projet-architecture
