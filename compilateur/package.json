@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "typescript": "^4.9.3"
+  },
+  "scripts": {
+    "start": "node ./build/index.js",
+    "compile": "npx tsc",
+    "compileStart": "npx tsc && node ./build/index.js"
+  }
+}
