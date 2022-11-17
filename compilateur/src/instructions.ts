@@ -91,7 +91,7 @@ listeInstructions.set("JEQU", new Instruction("JEQU", 0x3, ["Registre", "Registr
 listeInstructions.set("JINF", new Instruction("JINF", 0x7, ["Registre", "Registre", "Label"]))
 listeInstructions.set("JSUP", new Instruction("JSUP", 0xB, ["Registre", "Registre", "Label"]))
 listeInstructions.set("JNEQ", new Instruction("JNEQ", 0xF, ["Registre", "Registre", "Label"]))
-listeInstructions.set("JUMP", new Instruction("JUMP", 0x13, ["Registre", "Registre", "Label"]))
+listeInstructions.set("JMP", new Instruction("JMP", 0x13, "Label"))
 listeInstructions.set("CALL", new Instruction("CALL", 0x17, "Label"))
 listeInstructions.set("RET", new Instruction("RET", 0x1B,))
 
