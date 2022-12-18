@@ -1,0 +1,4 @@
+START:	ADDi R0 R0 2	# R0 = R0 + 2
+	ADDi R1 R0 3		# R1 = R0 + 3
+	ADD R2 R1 R0		# R2 = R1 + R0
+	STOP

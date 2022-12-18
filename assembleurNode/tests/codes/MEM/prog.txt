@@ -1,0 +1,6 @@
+XOR R0 R0 R0	# R0 = 0
+ADDi R1 R0 7	# R1 = 7
+ADDi R2 R0 69	# R2 = 69
+STR R1 R2		# MEM[R2] = 7
+LD R3 R2		# R3 = MEM[R2]
+STOP

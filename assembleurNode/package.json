@@ -1,0 +1,21 @@
+{
+  "name": "compilateur",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.4",
+    "chai": "^4.3.7",
+    "mocha": "^10.2.0"
+  },
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "test": "mocha tests/**/*.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

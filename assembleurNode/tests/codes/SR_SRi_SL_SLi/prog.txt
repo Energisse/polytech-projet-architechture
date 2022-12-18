@@ -1,0 +1,11 @@
+START :	XOR R0 R0 R0	# R0 = 0
+	ADDi R0 R0 1		# R0 = 1
+	SLi R1 R0 3			# R1 = 8
+	SRi R2 R1 2			# R2 = 2
+	SL R3 R1 R0			# R3 = 16
+	SR R4 R2 R3			# R4 = 2  R2 << (R3 & 0xF)
+	SRi R3 R3 1			# R3 = 8
+	SL R4 R2 R3			# R4 = 512
+    SLi R5 R2 16        # R5 = 0
+    STOP
+

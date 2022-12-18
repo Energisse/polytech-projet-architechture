@@ -1,0 +1,7 @@
+XOR R0 R0 R0	# R0 = 0
+ADDi R1 R0 7		# R1 = 7
+ADDi R0 R0 1		# R0 = 1
+AND R2 R0 R1		# R2 = 1
+OR R3 R0 R1			# R3 = 7
+XOR R4 R0 R1		# R4 = 6
+STOP
