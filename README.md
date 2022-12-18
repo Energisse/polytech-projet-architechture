@@ -24,9 +24,9 @@ Contenu du dossier :
 	Dossier permettant de convertir un code en langage
 	assembleur en langage compréhensible par le processeur
 	du fichier circuit.circ. Les étapes de la conversion
-	sont expliquées lors de l'exécution de ce programme 
-	python (il est nécessaire de pouvoir exécuter du code
-	nodeJs > 16.15).
+	sont expliquées lors de l'exécution du programme (il 
+	est nécessaire de pouvoir exécuter du code nodeJs
+	> 16.15).
  - codes_assembleur : 
 	Dossier contenant de nombreux codes assembleur afin
 	d'expérimenter toutes les fonctionnalités.
