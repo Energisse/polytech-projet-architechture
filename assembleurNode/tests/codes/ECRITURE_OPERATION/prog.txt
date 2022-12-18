@@ -1,0 +1,9 @@
+XOR R5 R5 R5
+ADDi R5 R5 8904 #MUL R3 R1 R2
+XOR R1 R1 R1
+ADDi R6 R6 7 #remplace le ADD par MUL
+ADDi R2 R1 15
+ADDi R1 R1 6 
+STR R5 R6
+ADD R3 R1 R2  #Remplacé par le MUL dans R5
+STOP

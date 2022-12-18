@@ -45,7 +45,7 @@ export function assembler(assembleur) {
         label = ligneDeCode[0].trim();
         if (!checkLabel(label)) throw new Error(`Label incorrecte`);
         if (labels.get(label) != undefined) {
-          throw new Error(`Label deja existant`);
+          throw new Error(`Label déjà existant`);
         }
         labels.set(label, positionLigne);
       }
@@ -59,8 +59,8 @@ export function assembler(assembleur) {
       positionLigne++;
     } catch (error) {
       throw new Error(
-        "Erreur a la ligne " +
-          indiceLigne +
+        "Erreur à la ligne " +
+          (indiceLigne+1) +
           " : " +
           ligne +
           "\n " +
@@ -74,8 +74,8 @@ export function assembler(assembleur) {
         return operartion.encode(params, labels, ligneRelative).toString(16);
       } catch (error) {
         throw new Error(
-          "Erreur a la ligne " +
-            ligneAbsolue +
+          "Erreur à la ligne " +
+            (ligneAbsolue+1) +
             " : " +
             ligne +
             "\n " +
@@ -104,7 +104,7 @@ class InstructionUAL extends Instruction {
   }
   encode(parametres) {
     if (parametres.length != 3)
-      throw new Error(`3 parametres sont necessaire pour : ${this.nom} `);
+      throw new Error(`3 paramètres sont nécessaire pour : ${this.nom} `);
     const params =
       getRegistre(parametres[0]) +
       (getRegistre(parametres[1]) << 3) +
@@ -119,7 +119,7 @@ class InstructionUAL extends Instruction {
 class InstructionMem extends Instruction {
   encode(parametres) {
     if (parametres.length != 2)
-      throw new Error(`2 parametres sont necessaire pour : ${this.nom} `);
+      throw new Error(`2 paramètres sont nécessaire pour : ${this.nom} `);
     const params =
       getRegistre(parametres[0]) + (getRegistre(parametres[1]) << 3);
     return (params << 6) + (this.codeHexa << 2) + 1;
@@ -129,7 +129,7 @@ class InstructionMem extends Instruction {
 class InstructionCTRLCond extends Instruction {
   encode(parametres, labels) {
     if (parametres.length != 3)
-      throw new Error(`3 parametres sont necessaire pour : ${this.nom} `);
+      throw new Error(`3 paramètres sont nécessaire pour : ${this.nom} `);
     if (!labels.has(parametres[2]))
       throw new Error(`Label : ${parametres[2]} inexistant`);
     const params =
@@ -143,7 +143,7 @@ class InstructionCTRLCond extends Instruction {
 class InstructionCTRLDeplacement extends Instruction {
   encode(parametres, labels) {
     if (parametres.length != 1)
-      throw new Error(`1 parametres sont necessaire pour : ${this.nom} `);
+      throw new Error(`1 paramètre est nécessaire pour : ${this.nom} `);
     if (!labels.has(parametres[0]))
       throw new Error(`Label : ${parametres[0]} inexistant`);
     const params = labels.get(parametres[0]) << 6;
@@ -154,7 +154,7 @@ class InstructionCTRLDeplacement extends Instruction {
 class InstructionCTRLRET extends Instruction {
   encode(parametres, labels) {
     if (parametres.length != 0)
-      throw new Error(`0 parametre sont necessaire pour : ${this.nom} `);
+      throw new Error(`0 paramètres nécessaire : ${this.nom} `);
     return 3 + (this.codeHexa << 2);
   }
 }
@@ -162,7 +162,7 @@ class InstructionCTRLRET extends Instruction {
 class InstructionCTRLSTOP extends Instruction {
   encode(parametres, labels, pos) {
     if (parametres.length != 0)
-      throw new Error(`0 parametre sont necessaire pour : ${this.nom} `);
+      throw new Error(`0  paramètres nécessaire : ${this.nom} `);
     return 3 + (this.codeHexa << 2) + (pos << 12);
   }
 }

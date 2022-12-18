@@ -7,6 +7,8 @@ import assemblerFichier, {
   getRegistre,
   getConstante,
 } from "../assembleur.js";
+const logisim = "../logisim-generic-2.7.1.jar"
+const circuit = "../circuit.circ";
 
 class Operation extends Array {
   constructor(operation) {
@@ -31,12 +33,11 @@ class Operation extends Array {
 
 function execute(prog) {
   return new Promise((resolve, reject) => {
-    const result = [];
     let chaine = "";
     const ls = spawn("java", [
       "-jar",
-      "../logisim-generic-2.7.1.jar",
-      "../circuit.circ",
+      logisim,
+      circuit,
       "-tty",
       "table",
       "-load",

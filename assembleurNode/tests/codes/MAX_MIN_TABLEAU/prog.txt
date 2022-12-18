@@ -1,0 +1,60 @@
+XOR R0 R0 R0 
+XOR R7 R7 R7
+ADDi R7 R7 600 #Pour eviter d'effacer le programme 
+#Empilement de 5 => [5]
+ADDi R1 R0 5
+STR R1 R7
+ADDi R7 R7 1
+
+#Empilement de 16 => [5,16]
+ADDi R1 R0 16
+STR R1 R7
+ADDi R7 R7 1
+
+#Empilement de 9 => [5,16,9]
+ADDi R1 R0 9
+STR R1 R7
+ADDi R7 R7 1
+
+#Empilement de 1 => [5,16,9,1]
+ADDi R1 R0 1
+STR R1 R7
+ADDi R7 R7 1
+
+#Empilement de 3 => [5,16,9,1,3]
+ADDi R1 R0 3
+STR R1 R7
+ADDi R7 R7 1
+
+#Empilement de 58 => [5,16,9,1,3,58]
+ADDi R1 R0 58
+STR R1 R7
+ADDi R7 R7 1
+
+#Empilement de 19 => [5,16,9,1,3,58,19]
+ADDi R1 R0 19
+STR R1 R7
+ADDi R7 R7 1
+
+#Empilement de 36 => [5,16,9,1,3,58,19,36]
+ADDi R1 R0 36
+STR R1 R7
+ADDi R7 R7 1
+
+XOR R6 R6 R6
+ADDi R6 R6 600 #position courant
+LD R2 R6 #min
+LD R3 R6 #max
+XOR R4 R4 R4 #courant
+
+BOUCLE: JEQU R6 R7 FIN
+LD R4 R6
+JINF R4 R2 MIN
+JSUP R4 R3 MAX
+JMP FINBLOUCLE
+MIN : ADDi R2 R4 0#R2 <= R4
+JMP FINBLOUCLE
+MAX : ADDi R3 R4 0
+FINBLOUCLE: ADDi R6 R6 1
+JMP BOUCLE
+FIN :STOP
