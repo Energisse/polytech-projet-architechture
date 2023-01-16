@@ -1,0 +1,29 @@
+        XOR R0 R0 R0
+        ADDi R7 R0 256
+        ADDi R1 R0 5
+        STR R1 R7
+        ADDi R7 R7 1
+        ADDi R1 R0 1
+        STR R1 R7
+        CALL FACTO
+        STOP
+FACTO:  XOR R0 R0 R0
+        LD R1 R7 #acc
+        SUBi R7 R7 1
+        LD R2 R7 #n
+        JEQU R2 R0 FIN #n==0
+        MUL R1 R1 R2 #acc*=n
+        SUBi R2 R2 1 #n--
+        STR R2 R7
+        ADDi R7 R7 1
+        STR R1 R7
+        CALL FACTO
+        RET
+FIN:    STR R1 R7 #mem[R7] = acc
+        RET
+
+
+#function aux(n,acc=1){
+#    if(n==0)return acc;
+#    return aux(n-1,acc*n)
+#}
