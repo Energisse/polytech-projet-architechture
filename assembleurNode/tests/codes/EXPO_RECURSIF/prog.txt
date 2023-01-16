@@ -1,0 +1,55 @@
+        XOR R0 R0 R0
+        ADDi R7 R0 256
+        ADDi R1 R0 5
+        STR R1 R7
+        ADDi R7 R7 1
+        ADDi R1 R0 6
+        STR R1 R7
+        CALL EXPO
+        STOP
+EXPO:   XOR R0 R0 R0
+        ADDi R1 R0 1
+        LD R2 R7 #n
+        JEQU R2 R0 FIN1 #n==0
+        JEQU R2 R1 FIN2 #n==1
+        ANDi R3 R2 1
+        JEQU R3 R0 FIN3 #n%2==0
+        SUBi R7 R7 1
+        LD R4 R7 #acc
+        MUL R4 R4 R4
+        ADDi R7 R7 1
+        STR R4 R7
+        ADDi R7 R7 1
+        SUBi R2 R2 1 #n-=1
+        SRi R2 R2 1 #n/=2
+        STR R2 R7
+        CALL EXPO
+        LD R0 R7
+        SUBi R7 R7 1
+        LD R1 R7
+        MUL R0 R0 R1
+        STR R0 R7
+        RET
+FIN1:   SUBi R7 R7 1
+        STR R1 R7 #mem[R7] = 1
+        RET
+FIN2:   SUBi R7 R7 1
+        RET
+FIN3:   SUBi R7 R7 1
+        LD R4 R7 #acc
+        MUL R4 R4 R4
+        STR R4 R7
+        ADDi R7 R7 1
+        SRi R2 R2 1 #n/=2
+        STR R2 R7
+        CALL EXPO
+        RET
+
+
+#int expo(int acc;int n){
+#    if(n == 0) return 1;
+#    if(n == 1)return acc;
+#    if(n%2 == 0)return expo(acc*acc,n/2)
+#    return acc*expo(acc*acc,(n-1)/2)
+#}
+
